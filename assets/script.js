@@ -6,35 +6,40 @@ var choice1El = document.querySelector("#choice1");
 var choice2El = document.querySelector("#choice2");
 var choice3El = document.querySelector("#choice3");
 var choice4El = document.querySelector("#choice4");
-var ques2El = document.querySelector("#quesTwo");
-var choice5El = document.querySelector("#choice5");
-var choice6El = document.querySelector("#choice6");
-var choice7El = document.querySelector("#choice7");
-var choice8El = document.querySelector("#choice8");
+var timeInterval;
+
+var currentQuestions = 0
+
+var questions = [
+    {
+        question: "what is a function?", 
+        choices: ["An expression, rule, or law that defines a relationship between one variable", "A set of statements that performs a task or calculates a value", "A set of arrays", "Helps define document.querySelector"],
+        answer: "A set of statements that performs a task or calculates a value"
+    },
+    {
+        question: "what is a function?", 
+        choices: ["An expression, rule, or law that defines a relationship between one variable", "A set of statements that performs a task or calculates a value", "A set of arrays", "Helps define document.querySelector"],
+        answer: "A set of statements that performs a task or calculates a value"
+    },
+]
 
 function startQuiz() {
     countdown();
-    quesEl.textContent = "What is a function?"
     choicesEl.style.display = "block"
-    choice1El.textContent = "An expression, rule, or law that defines a relationship between one variable"
-    choice2El.textContent = "A set of statements that performs a task or calculates a value"
-    choice3El.textContent = "A set of arrays"
-    choice4El.textContent = "Helps define document.querySelector"
+    displayQuestions();
 }
-
-function ques2() {
-    ques2El.textContent = "."
-    choicesEl.style.display = "block"
-    choice1El.textContent = ""
-    choice1El.textContent = ""
-    choice1El.textContent = ""
-    choice1El.textContent = ""
+function displayQuestions(){
+    quesEl.textContent = questions[currentQuestions].question
+    choice1El.textContent = questions[currentQuestions].choices[0]
+    choice2El.textContent = questions[currentQuestions].choices[1]
+    choice3El.textContent = questions[currentQuestions].choices[2]
+    choice4El.textContent = questions[currentQuestions].choices[3]
 }
 
 function countdown() {
     var timeLeft = 75;
 
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
         
         if (timeLeft > 1) {
             // Set the `textContent` of `timerEl` to show the remaining seconds
@@ -53,5 +58,3 @@ function countdown() {
 
 
 startBtn.addEventListener("click", startQuiz);
-choice2El.addEventListener("click", ques2);
-choice1El.addEventListener("click", timeLeft--);
